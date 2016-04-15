@@ -18,6 +18,12 @@ session:
 	expiration: 14 days
 
 services:
+	- App\Model\Parser
+	- App\Model\WeatherService
 	router: App\RouterFactory::createRouter
 
 constants:
+	weatherURL: 'http://api.openweathermap.org/data/2.5/weather?q={CITY}&units=metric&APPID=04b2ee14fe1c7d9c6645d478fc6b71de'
+	defaultCity: Liberec
+	dataPath: 'data.txt'
+	infoFile: 'info.txt'
