@@ -20,7 +20,7 @@ class BasePresenter extends Presenter {
 
     public function startup() {
         parent::startup();
-        $this->updateData(defaultCity);
+        $this->updateData($this->weatherService->getCity());
     }
 
     /**
