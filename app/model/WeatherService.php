@@ -59,6 +59,20 @@ class WeatherService {
     }
 
     /**
+     * @param string $city
+     */
+    public function saveCity($city) {
+        file_put_contents(cityPath, $city);
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(){
+        return file_get_contents(cityPath);
+    }
+
+    /**
      * @param string $path
      * @return Resource\Weather
      */
