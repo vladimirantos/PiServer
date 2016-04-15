@@ -1,5 +1,7 @@
 <?php
 namespace App\Model;
+use App\Model\Resource\Temperature;
+use App\Model\Resource\Weather;
 
 /**
  * Class Parser
@@ -11,9 +13,9 @@ class Parser implements IParser {
 
     /**
      * @param string $text
-     * @return string
+     * @return Weather
      */
     public function parse($text) {
-
+        
     }
 }

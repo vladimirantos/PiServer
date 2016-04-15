@@ -1,5 +1,6 @@
 <?php
 namespace App\Model;
+use App\Model\Resource\Weather;
 
 /**
  * Interface IParser
@@ -11,7 +12,7 @@ interface IParser {
 
     /**
      * @param string $text
-     * @return string
+     * @return Weather
      */
     function parse($text);
 }
