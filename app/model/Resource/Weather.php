@@ -53,7 +53,6 @@ class Weather extends Resource{
 
     /**
      * @param string $coordinates
-     * @param string $city
      * @param string $main
      * @param string $description
      * @param float $pressure
@@ -61,15 +60,18 @@ class Weather extends Resource{
      * @param Temperature $temperature
      * @param string $wind
      */
-    public function __construct($coordinates, $city, $main, $description, $pressure, $humidity, Temperature $temperature, $wind) {
+    public function __construct($coordinates, $main, $description, $pressure, $humidity, Temperature $temperature, $wind) {
         $this->coordinates = $coordinates;
-        $this->city = $city;
         $this->main = $main;
         $this->description = $description;
         $this->pressure = $pressure;
         $this->humidity = $humidity;
         $this->temperature = $temperature;
         $this->wind = $wind;
+    }
+
+    public function setCity($city) {
+        $this->city = $city;
     }
 
     /**

@@ -45,6 +45,9 @@ class WeatherService {
      */
     public function save($path) {
         b("Ukládám");
+        b(file_exists($path));
+        if(file_exists($path))
+            fopen($path, 'w');
         file_put_contents($path, $this->content);
         file_put_contents(infoFile, date("d.m.Y"));
     }
@@ -62,14 +65,29 @@ class WeatherService {
      * @param string $city
      */
     public function saveCity($city) {
-        file_put_contents(cityPath, $city);
+        $cities =  explode(PHP_EOL, file_get_contents(cityPath));
+        $city = $city == null ? defaultCity : $city;
+        $result = null;
+        foreach ($cities as $c) {
+            $c = str_replace("*", "", $c);
+            if($city == $c)
+                $c = $c.'*';
+            $result .= $c . PHP_EOL;
+        }
+        $result = trim($result);
+        file_put_contents(cityPath, $result);
     }
 
     /**
      * @return string
      */
-    public function getCity(){
-        return file_get_contents(cityPath);
+    public function getCurrentCity(){
+        $cities =  explode("\n", file_get_contents(cityPath));
+        b($cities);
+        foreach ($cities as $city)
+            if(Strings::contains($city, "*"))
+                return $city;
+        return defaultCity;
     }
 
     /**
@@ -77,6 +95,8 @@ class WeatherService {
      * @return Resource\Weather
      */
     public function load($path) {
-        return $this->parser->parse(file_get_contents($path));
+        $weather = $this->parser->parse(file_get_contents($path));
+        $weather->setCity($this->getCurrentCity());
+        return $weather;
     }
 }
