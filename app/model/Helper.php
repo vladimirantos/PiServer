@@ -34,10 +34,10 @@ class Helper extends Object{
         if(self::inRange($degree, 56.25, 101.25)) return "V";
         if(self::inRange($degree, 101.25, 146.25)) return "JV";
         if(self::inRange($degree, 146.25, 191.25)) return "J";
-        if(self::inRange($degree, 191.25, 213.25)) return "JZ";
-        if(self::inRange($degree, 213.25, 258.75)) return "Z";
-        if(self::inRange($degree, 258.75, 303.75)) return "SZ";
-        return "X";
+        if(self::inRange($degree, 191.25, 236.25)) return "JZ";
+        if(self::inRange($degree, 236.25, 281.25)) return "Z";
+        if(self::inRange($degree, 281.25, 348.25)) return "SZ";
+        return "S";
         //todo: chybné propočty
     }
 
