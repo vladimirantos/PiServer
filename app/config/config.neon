@@ -27,4 +27,4 @@ constants:
 	defaultCity: Liberec
 	dataPath: 'data.txt'
 	infoFile: 'info.txt'
-	cityPath: 'city.txt'
+	cityPath: 'cities.txt'

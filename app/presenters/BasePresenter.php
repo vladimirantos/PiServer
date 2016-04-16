@@ -20,7 +20,7 @@ class BasePresenter extends Presenter {
 
     public function startup() {
         parent::startup();
-        $this->updateData($this->weatherService->getCity());
+        $this->safetyUpdate();
     }
 
     /**
@@ -34,11 +34,17 @@ class BasePresenter extends Presenter {
     }
 
     /**
-     * Kontroluje jestli je potřeba znovu stáhnout předpověď.
-     * @param string $city
+     * Aktualizuje předpověď.
      */
-    protected function updateData($city) {
-        $this->weatherService->needUpdate() ? $this->weatherService->download(weatherURL, $city)->save(dataPath) : null;
+    protected function updateData() {
+        $this->weatherService->download(weatherURL, $this->weatherService->getCurrentCity())->save(dataPath);
+    }
+
+    /**
+     * Kontroluje jestli je potřeba znovu stáhnout předpověď.
+     */
+    protected function safetyUpdate(){
+        $this->weatherService->needUpdate() ? $this->weatherService->download(weatherURL, $this->weatherService->getCurrentCity())->save(dataPath) : null;
     }
 
     /**
