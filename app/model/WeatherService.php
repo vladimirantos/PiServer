@@ -99,4 +99,16 @@ class WeatherService {
         $weather->setCity($this->getCurrentCity());
         return $weather;
     }
+
+    /**
+     * @return array
+     */
+    public function getAllCities() {
+        $cities = explode(PHP_EOL, file_get_contents(cityPath));
+        $result = [];
+        foreach ($cities as $city) {
+            $result[] = str_replace("*", null, $city);
+        }
+        return $result;
+    }
 }

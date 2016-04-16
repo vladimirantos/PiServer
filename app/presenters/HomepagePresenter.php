@@ -12,7 +12,10 @@ class HomepagePresenter extends BasePresenter {
     }
     
     public function actionDefault(){
-        $this->sendData($this->weatherService->load(dataPath));
+        if(!file_exists(dataPath))
+            $this->updateData();
+        $data = $this->weatherService->load(dataPath);
+        $this->sendData($data);
     }
 
     /**
@@ -21,6 +24,10 @@ class HomepagePresenter extends BasePresenter {
      */
     public function actionChangeCity($city){
         $this->weatherService->saveCity($city);
-        $this->updateData($city);
+        $this->updateData();
+    }
+    
+    public function actionAllCities(){
+        return $this->sendData($this->weatherService->getAllCities());
     }
 }
