@@ -5,4 +5,5 @@ vendor/*
 !.gitignore
 !.htaccess
 !web.config
+!vendor/others/funnctions.php
 app/config/config.local.neon

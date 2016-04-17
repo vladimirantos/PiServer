@@ -1,5 +1,6 @@
 <?php
 namespace App\Model;
+use App\Model\Resource\Temperature;
 use App\Model\Resource\Weather;
 
 /**
@@ -15,6 +16,6 @@ class Parser implements IParser {
      * @return Weather
      */
     public function parse($text) {
-
+        return new Weather(null, null, null, null, null, new Temperature(10,10,10), null);
     }
 }
