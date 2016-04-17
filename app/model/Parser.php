@@ -15,8 +15,7 @@ class Parser implements IParser {
      * @param string $text
      * @return Weather
      */
-    public function parse($text) 
-    {
+    public function parse($text) {
         $jsonData = json_decode($text);
         
         $coordinates = $jsonData->coord;
