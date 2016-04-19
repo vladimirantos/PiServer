@@ -139,10 +139,11 @@ google.maps.event.addDomListener(window, 'load', initialize);
 // --- Send city to server
 function sendCity(countryName)
 {
+    console.log(countryName);
     if(countryName == "")
         return;
     else
     {
-        $.ajax({url: "/piserver/www/homepage/change-city", data: {city: countryName}});
+        $.ajax({url: "/piserver_local/www/homepage/change-city", data: {city: countryName}});
     }
 }

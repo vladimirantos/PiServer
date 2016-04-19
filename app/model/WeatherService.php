@@ -1,6 +1,5 @@
 <?php
 namespace App\Model;
-use Nette\Utils\Strings;
 
 /**
  * Class WeatherService
