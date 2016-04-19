@@ -17,7 +17,6 @@ class Parser implements IParser {
      */
     public function parse($text) {
         $jsonData = json_decode($text);
-        
         $coordinates = $jsonData->coord;
         $main = $jsonData->weather[0]->main;
         $description = $jsonData->weather[0]->description;
@@ -26,6 +25,6 @@ class Parser implements IParser {
         $temperature  = new Temperature($jsonData->main->temp, $jsonData->main->temp_min, $jsonData->main->temp_max);
         $wind = $jsonData->wind->speed.'m/s '.Helper::windDirection($jsonData->wind->deg);
         
-        return new Weather($coordinates, $main, $description, $pressure, $humidity, $temperature, $wind);
+        return new Weather($coordinates, $jsonData->weather[0]->icon, $main, $description, $pressure, $humidity, $temperature, $wind);
     }
 }
