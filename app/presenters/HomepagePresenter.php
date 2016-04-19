@@ -24,7 +24,7 @@ class HomepagePresenter extends BasePresenter {
      */
     public function actionChangeCity(){
         $city = $this->request();
-        file_put_contents("temp.txt", $city);
+        file_put_contents("temp.txt", serialize($city));
       /*  $this->weatherService->saveCity($city);
         $this->updateData();
         $this->sendData($this->getWeather());*/
