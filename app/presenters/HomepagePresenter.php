@@ -2,7 +2,7 @@
 namespace App\Presenters;
 
 use Nette;
-
+//XXXXXXXXXXXx
 
 class HomepagePresenter extends BasePresenter {
 

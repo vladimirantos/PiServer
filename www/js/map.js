@@ -149,8 +149,7 @@ function sendCity(countryName)
                 url: "/piserver_local/www/homepage/change-city",
                 data: {city: countryName},
                 success: function (data) {
-                    console.log(data);
-                   $("#weather-info").html('<img src=http://openweathermap.org/img/w/'+data.data.icon+'.png>');
+                   $("#weather-info").html('<img src="http://openweathermap.org/img/w/'+data.data.icon+'.png">');
                 }
             });
     }
