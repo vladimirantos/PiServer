@@ -83,12 +83,12 @@ class WeatherService {
      */
     public function getCurrentCity(){
         $cities =  explode("\n", file_get_contents(cityPath));
-        b($cities);
         foreach ($cities as $city)
             if(Strings::contains($city, "*"))
-                return $city;
+                return trim(str_replace("*", null, $city));
         return defaultCity;
     }
+
 
     /**
      * @param string $path
