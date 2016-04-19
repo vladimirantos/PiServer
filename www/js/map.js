@@ -147,7 +147,7 @@ function sendCity(countryName)
         $.ajax(
             {
                 type: 'POST',
-                url: "/piserver/www/homepage/change-city",
+                url: "/piserver_local/www/homepage/change-city",
                 data: send,
                 success: function (data) {
                     console.log(data);

@@ -42,7 +42,6 @@ class WeatherService {
      * @param string $path
      */
     public function save($path) {
-        b("Ukládám");
         if(file_exists($path))
             fopen($path, 'w');
         file_put_contents($path, $this->content);
