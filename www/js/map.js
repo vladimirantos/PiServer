@@ -147,6 +147,7 @@ function sendCity(countryName)
             {
                 type: "POST",
                 url: "/piserver_local/www/homepage/change-city",
+                contentType: 'application/json; charset=utf-8',
                 data: {city: countryName},
                 success: function (data) {
                    $("#weather-info").html('<img src="http://openweathermap.org/img/w/'+data.data.icon+'.png">');
