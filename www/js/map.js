@@ -26,6 +26,7 @@ function initialize() {
             + "<br />" + event.feature.getProperty("weather")
         );
         countryName = event.feature.getProperty("city");
+        sendCity(countryName);
         infowindow.setOptions({
             position:{
                 lat: event.latLng.lat(),
@@ -135,3 +136,14 @@ var resetData = function () {
     });
 };
 google.maps.event.addDomListener(window, 'load', initialize);
+
+// --- Send city to server
+function sendCity(countryName)
+{
+    if(countryName == "")
+        return;
+    else
+    {
+        $.ajax({url: "/piserver/www/homepage/change-city", data: {city: countryName}});
+    }
+}
