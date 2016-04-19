@@ -145,10 +145,12 @@ function sendCity(countryName)
     {
         $.ajax(
             {
-                url: "/piserver_local/www/homepage/change-city",
-                data: JSON.stringify({ your: data}),
+                type: "POST",
+                url: "/piserver/www/homepage/change-city",
+                data: JSON.stringify({ city: countryName}),
                 success: function (data) {
-                   $("#weather-info").val('BANIK PICO');//.html('<img src=http://openweathermap.org/img/w/'+data.data.icon+'.png'>+ " "+ data.data.city + " - " + data.data.temperature.real +"°C");
+                    console.log(data);
+                   $("#weather-info").html('<img src=http://openweathermap.org/img/w/'+data.data.icon+'.png'>+ " "+ data.data.city + " - " + data.data.temperature.real +"°C");
                 }
             });
     }
