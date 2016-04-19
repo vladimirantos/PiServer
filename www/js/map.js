@@ -150,7 +150,7 @@ function sendCity(countryName)
                 data: JSON.stringify({ city: countryName}),
                 success: function (data) {
                     console.log(data);
-                   $("#weather-info").html('<img src=http://openweathermap.org/img/w/'+data.data.icon+'.png'>+ " "+ data.data.city + " - " + data.data.temperature.real +"°C");
+                   $("#weather-info").html('<img src=http://openweathermap.org/img/w/'+data.data.icon+'.png>');
                 }
             });
     }
