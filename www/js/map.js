@@ -148,7 +148,8 @@ function sendCity(countryName)
                 url: "/piserver/www/homepage/change-city",
                 data: {city: countryName},
                 success: function (data) {
-                   $("weather-info").val('<img src=http://openweathermap.org/img/w/'+data.data.icon+'.png'>+ " "+ data.data.city + " - " + data.data.temperature.real +"°C");
+                    console.log(data);
+                   $("#weather-info").html('<img src=http://openweathermap.org/img/w/'+data.data.icon+'.png'>+ " "+ data.data.city + " - " + data.data.temperature.real +"°C");
                 }
             });
     }
