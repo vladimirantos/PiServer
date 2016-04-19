@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-	<title>{ifset title}{include title|striptags} | {/ifset}Nette Web</title>
+	<title>{ifset title}{include title|striptags} | {/ifset}PI Weather</title>
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="{$basePath}/css/bootstrap.min.css">
 	<link rel="stylesheet" href="{$basePath}/css/bootstrap-theme.min.css">
@@ -20,10 +20,14 @@
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="#">PI Project</a>
+				<a class="navbar-brand" href="#">PI Weather</a>
 			</div>
 			<ul class="nav navbar-nav">
-				<li><span class="navbar-text" id="weather-info"></span></li>
+				<li><span class="navbar-text" id="weather-info">
+						{dump $weather}
+						<img src="http://openweathermap.org/img/w/{$weather->icon}.png" width="40" height="40">
+						<b>{$weather->city} {$weather->temperature->real}°C</b>
+					</span></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#" data-toggle="modal" data-target="#myModal"><span class="fa fa-question-circle"></span> O aplikaci</a>
