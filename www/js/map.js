@@ -89,7 +89,7 @@ var jsonToGeoJson = function (weatherItem) {
         properties: {
             city: weatherItem.name,
             weather: weatherItem.weather[0].main,
-            temperature: weatherItem.main.temp,
+            temperature: Math.round(weatherItem.main.temp),
             min: weatherItem.main.temp_min,
             max: weatherItem.main.temp_max,
             humidity: weatherItem.main.humidity,
@@ -143,7 +143,7 @@ function sendCity(countryName)
         return;
     else
     {
-        var send = {city: countryName};
+        var send = {"city": countryName};
         $.ajax(
             {
                 type: 'POST',

@@ -22,7 +22,7 @@ class Parser implements IParser {
         $description = $jsonData->weather[0]->description;
         $pressure = $jsonData->main->pressure;
         $humidity = $jsonData->main->humidity;
-        $temperature  = new Temperature($jsonData->main->temp, $jsonData->main->temp_min, $jsonData->main->temp_max);
+        $temperature  = new Temperature(round($jsonData->main->temp), round($jsonData->main->temp_min), round($jsonData->main->temp_max));
         $wind = $jsonData->wind->speed.'m/s '.Helper::windDirection($jsonData->wind->deg);
         
         return new Weather($coordinates, $jsonData->weather[0]->icon, $main, $description, $pressure, $humidity, $temperature, $wind);
