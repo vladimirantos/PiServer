@@ -11,7 +11,7 @@ class HomepagePresenter extends BasePresenter {
         parent::startup();
     }
     
-    public function actionDefault(){
+    public function actionWeather(){
         if(!file_exists(dataPath))
             $this->updateData();
         $data = $this->weatherService->load(dataPath);
