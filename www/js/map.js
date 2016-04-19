@@ -147,9 +147,10 @@ function sendCity(countryName)
         $.ajax(
             {
                 type: 'POST',
-                url: "/piserver_local/www/homepage/change-city",
+                url: "/piserver/www/homepage/change-city",
                 data: send,
                 success: function (data) {
+                    console.log(data);
                     $("#weather-info").html('<img src="http://openweathermap.org/img/w/'+data.data.icon+'.png" width="40" height="40">');
                     $("#weather-info").append('<b>'+data.data.city + ' </b>');
                     $("#weather-info").append('<b>'+data.data.temperature.real + '°C</b>');
