@@ -2,6 +2,14 @@ body{
     background-color: #cbcbcb;
 }
 
+.nav{
+    height: 50px;
+}
+
+#weather-info{
+    margin-top: 5px;
+}
+
 .container{
     background: #fff;
     height: 90vh;

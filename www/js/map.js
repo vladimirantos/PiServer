@@ -151,6 +151,8 @@ function sendCity(countryName)
                 data: send,
                 success: function (data) {
                     $("#weather-info").html('<img src="http://openweathermap.org/img/w/'+data.data.icon+'.png" width="40" height="40">');
+                    $("#weather-info").append('<b>'+data.data.city + ' </b>');
+                    $("#weather-info").append('<b>'+data.data.temperature.real + '°C</b>');
                 }
             });
     }
