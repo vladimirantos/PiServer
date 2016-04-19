@@ -37,7 +37,8 @@ class BasePresenter extends Presenter {
      * Aktualizuje předpověď.
      */
     protected function updateData() {
-        $this->weatherService->download(weatherURL, $this->weatherService->getCurrentCity())->save(dataPath);
+        $city = $this->weatherService->getCurrentCity();
+        $this->weatherService->download(weatherURL, $city)->save(dataPath);
     }
 
     /**

@@ -34,7 +34,6 @@ class WeatherService {
      * @return WeatherService
      */
     public function download($path, $city) {
-        b("Aktualizuju");
         $this->content = file_get_contents(str_replace("{CITY}", $city, $path));
         return $this;
     }

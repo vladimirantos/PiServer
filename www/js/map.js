@@ -143,14 +143,15 @@ function sendCity(countryName)
         return;
     else
     {
+        var send = {city: countryName};
         $.ajax(
             {
-                type: "POST",
+                type: 'POST',
                 url: "/piserver_local/www/homepage/change-city",
-                contentType: 'application/json; charset=utf-8',
-                data: {city: countryName},
+                data: send,
                 success: function (data) {
-                   $("#weather-info").html('<img src="http://openweathermap.org/img/w/'+data.data.icon+'.png">');
+                    console.log(data);
+                   //$("#weather-info").html('<img src="http://openweathermap.org/img/w/'+data.data.icon+'.png">');
                 }
             });
     }
