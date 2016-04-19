@@ -36,7 +36,6 @@ function initialize() {
                 height: -15
             }
         });
-        
         infowindow.open(map);
     });
 }
