@@ -45,7 +45,6 @@ class WeatherService {
      */
     public function save($path) {
         b("Ukládám");
-        b(file_exists($path));
         if(file_exists($path))
             fopen($path, 'w');
         file_put_contents($path, $this->content);
@@ -65,28 +64,29 @@ class WeatherService {
      * @param string $city
      */
     public function saveCity($city) {
-        $cities =  explode(PHP_EOL, file_get_contents(cityPath));
-        $city = $city == null ? defaultCity : $city;
-        $result = null;
-        foreach ($cities as $c) {
-            $c = str_replace("*", "", $c);
-            if($city == $c)
-                $c = $c.'*';
-            $result .= $c . PHP_EOL;
-        }
-        $result = trim($result);
-        file_put_contents(cityPath, $result);
+//        $cities =  explode(PHP_EOL, file_get_contents(cityPath));
+//        $city = $city == null ? defaultCity : $city;
+//        $result = null;
+//        foreach ($cities as $c) {
+//            $c = str_replace("*", "", $c);
+//            if($city == $c)
+//                $c = $c.'*';
+//            $result .= $c . PHP_EOL;
+//        }
+//        $result = trim($result);
+        file_put_contents(cityPath, $city);
     }
 
     /**
      * @return string
      */
     public function getCurrentCity(){
-        $cities =  explode("\n", file_get_contents(cityPath));
-        foreach ($cities as $city)
-            if(Strings::contains($city, "*"))
-                return trim(str_replace("*", null, $city));
-        return defaultCity;
+        return ($city = file_get_contents(cityPath)) == null ? defaultCity : $city;
+//        $cities =  explode("\n", file_get_contents(cityPath));
+//        foreach ($cities as $city)
+//            if(Strings::contains($city, "*"))
+//                return trim(str_replace("*", null, $city));
+//        return defaultCity;
     }
 
 

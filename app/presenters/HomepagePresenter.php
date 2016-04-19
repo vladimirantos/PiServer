@@ -1,7 +1,6 @@
 <?php
 namespace App\Presenters;
 
-use App\Model\Helper;
 use Nette;
 
 
@@ -12,10 +11,11 @@ class HomepagePresenter extends BasePresenter {
     }
     
     public function actionWeather(){
-        if(!file_exists(dataPath))
-            $this->updateData();
-        $data = $this->weatherService->load(dataPath);
-        $this->sendData($data);
+        $this->sendData($this->getWeather());
+    }
+
+    public function renderDefault(){
+        $this->template->weather = $this->getWeather();
     }
 
     /**
@@ -29,5 +29,11 @@ class HomepagePresenter extends BasePresenter {
     
     public function actionAllCities(){
         return $this->sendData($this->weatherService->getAllCities());
+    }
+
+    public function getWeather(){
+        if(!file_exists(dataPath))
+            $this->updateData();
+        return $this->weatherService->load(dataPath);
     }
 }
