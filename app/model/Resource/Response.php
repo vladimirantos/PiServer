@@ -9,38 +9,14 @@ namespace App\Model\Resource;
  */
 class Response extends Resource {
 
-    /** @var int */
-    private $httpCode = 200;
-
-    /** @var string */
-    private $message;
-
     /** @var Resource|array */
     private $data;
 
     /**
-     * @param int $httpCode
-     * @param string $message
      * @param Resource|array $data
      */
-    public function __construct($httpCode, $message, $data = null) {
-        $this->httpCode = $httpCode;
-        $this->message = $message;
+    public function __construct($data = null){
         $this->data = $data;
-    }
-
-    /**
-     * @return int
-     */
-    public function getHttpCode() {
-        return $this->httpCode;
-    }
-
-    /**
-     * @return string
-     */
-    public function getMessage() {
-        return $this->message;
     }
 
     /**

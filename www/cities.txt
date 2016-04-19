@@ -2,5 +2,5 @@ Berlin
 Liberec
 London
 Paris
-Prague
-Wien*
+Prague*
+Wien

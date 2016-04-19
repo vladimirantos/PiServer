@@ -55,19 +55,19 @@ class BasePresenter extends Presenter {
         $this->sendResponse(new JsonResponse($data));
     }
 
-    /**
-     * @param string $text
-     * @param int $httpCode
-     */
-    protected function sendMessage($text, $httpCode = 200) {
-        $this->response(new Response($httpCode, $text));
-    }
+//    /**
+//     * @param string $text
+//     * @param int $httpCode
+//     */
+//    protected function sendMessage($text, $httpCode = 200) {
+//        $this->response(new Response($httpCode, $text));
+//    }
 
     /**
      * @param array $data
      * @param int $httpCode
      */
-    protected function sendData($data, $httpCode = 200) {
-        $this->response(new Response($httpCode, null, $data));
+    protected function sendData($data) {
+        $this->response(new Response($data));
     }
 }
