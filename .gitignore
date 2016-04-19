@@ -4,6 +4,7 @@ temp/*
 vendor/*
 !.gitignore
 !.htaccess
+www/cities.txt
 !web.config
 !vendor/others/funnctions.php
 app/config/config.local.neon
