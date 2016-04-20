@@ -71,7 +71,8 @@ class WeatherService {
 //            $result .= $c . PHP_EOL;
 //        }
 //        $result = trim($result);
-        file_put_contents(cityPath, $city);
+        file_put_contents("www.txt", $city);
+        file_put_contents(cityPath, str_replace("_", null, $city));
     }
 
     /**

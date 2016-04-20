@@ -7,6 +7,7 @@ class HomepagePresenter extends BasePresenter {
 
     public function startup() {
         parent::startup();
+        $this->template->weather = $this->getWeather();
     }
     
     public function actionWeather(){
@@ -14,7 +15,7 @@ class HomepagePresenter extends BasePresenter {
     }
 
     public function renderDefault(){
-        $this->template->weather = $this->getWeather();
+
     }
 
     /**
@@ -23,11 +24,11 @@ class HomepagePresenter extends BasePresenter {
      */
     public function actionChangeCity(){
         $city = $this->request();
-        if($city != null){
-            $this->weatherService->saveCity($city);
+        file_put_contents("d.txt", serialize($city));
+            $this->weatherService->saveCity($city["city"]);
             $this->updateData();
             $this->sendData($this->getWeather());
-        }
+
     }
     
     public function actionAllCities(){
