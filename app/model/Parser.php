@@ -17,13 +17,15 @@ class Parser implements IParser {
      */
     public function parse($text) {
         $jsonData = json_decode($text);
+        if($jsonData === null)
+            return null;
         $coordinates = $jsonData->coord;
         $main = $jsonData->weather[0]->main;
         $description = $jsonData->weather[0]->description;
         $pressure = $jsonData->main->pressure;
         $humidity = $jsonData->main->humidity;
         $temperature  = new Temperature(round($jsonData->main->temp), round($jsonData->main->temp_min), round($jsonData->main->temp_max));
-        $wind = $jsonData->wind->speed.'m/s '.Helper::windDirection($jsonData->wind->deg);
+        $wind = $jsonData->wind->speed.'m/s '.(property_exists($jsonData->wind, "deg") ? Helper::windDirection($jsonData->wind->deg) : null);
         
         return new Weather($coordinates, $jsonData->weather[0]->icon, $main, $description, $pressure, $humidity, $temperature, $wind);
     }

@@ -1,5 +1,6 @@
 <?php
 namespace App\Model;
+use Nette\Utils\Strings;
 
 /**
  * Class WeatherService
@@ -34,7 +35,7 @@ class WeatherService {
      * @return WeatherService
      */
     public function download($path, $city) {
-        $this->content = file_get_contents(str_replace("{CITY}", $city, $path));
+        $this->content = file_get_contents(str_replace("{CITY}", Strings::webalize($city), $path));
         return $this;
     }
 
@@ -71,8 +72,7 @@ class WeatherService {
 //            $result .= $c . PHP_EOL;
 //        }
 //        $result = trim($result);
-        file_put_contents("www.txt", $city);
-        file_put_contents(cityPath, str_replace("_", null, $city));
+        file_put_contents(cityPath, str_replace("_", " ", $city));
     }
 
     /**

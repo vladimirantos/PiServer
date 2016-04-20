@@ -20,15 +20,14 @@ class HomepagePresenter extends BasePresenter {
 
     /**
      * /piserver/www/homepage/change-city?city=$city
-     * @param string $city
      */
     public function actionChangeCity(){
         $city = $this->request();
-        file_put_contents("d.txt", serialize($city));
-            $this->weatherService->saveCity($city["city"]);
+        if($city != null){
+            $this->weatherService->saveCity($city);
             $this->updateData();
             $this->sendData($this->getWeather());
-
+        }
     }
     
     public function actionAllCities(){
